@@ -9,11 +9,17 @@ The scripts here are lightweight wrappers that load pretrained models, run
 inference on images or videos, and compose stylized backgrounds while keeping
 foreground subjects.
 
-<video width="640" controls>
-  <source src="output/video_test_stylized_scream.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<p align="center">
+  <img src="media/29556012541_3942bae649_o.jpg" width="25%">
+  <img src="media/13.jpg" width="37.5%">
+  <img src="media/img_style_trans.png" width="25%">
+</p>
 
+<p align="center">
+  <img src="media/video.gif" width="35%">
+  <img src="Naive-Background-Style-Transfer/naive_background_style_transfer/Input_Images/Style/scream.jpg" width="15.5%">
+  <img src="media/video_test_stylized_scream.gif" width="35%">
+</p>
 
 
 
