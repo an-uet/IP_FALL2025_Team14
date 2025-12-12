@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/AdaIN" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/MODNet" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Naive-Background-Style-Transfer" vcs="Git" />
+  </component>
+</project>
