@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Style Transfer UI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 20px;
+        }
+        img {
+            max-width: 250px;
+            border: 1px solid #ccc;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Neural Style Transfer Demo</h2>
+
+<form id="transfer-form">
+    <div class="container">
+        <div>
+            <p>Content Image</p>
+            <input type="file" id="content" name="content" accept="image/*"><br><br>
+            <img id="content-preview">
+        </div>
+
+        <div>
+            <p>Style Image</p>
+            <input type="file" id="style" name="style" accept="image/*"><br><br>
+            <img id="style-preview">
+        </div>
+
+        <div>
+            <p>Output Image</p>
+            <img id="output-preview">
+        </div>
+    </div>
+
+    <button type="submit">Transfer</button>
+</form>
+
+<script>
+function previewImage(input, previewId) {
+    const file = input.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+        document.getElementById(previewId).src = reader.result;
+    };
+    reader.readAsDataURL(file);
+}
+
+document.getElementById("content").addEventListener("change", function () {
+    previewImage(this, "content-preview");
+});
+
+document.getElementById("style").addEventListener("change", function () {
+    previewImage(this, "style-preview");
+});
+
+document.getElementById("transfer-form").addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const formData = new FormData();
+    formData.append("content", document.getElementById("content").files[0]);
+    formData.append("style", document.getElementById("style").files[0]);
+
+    const response = await fetch("/transfer", {
+        method: "POST",
+        body: formData
+    });
+
+    const data = await response.json();
+    document.getElementById("output-preview").src = data.output_url + "?t=" + new Date().getTime();
+});
+</script>
+
+</body>
+</html>
