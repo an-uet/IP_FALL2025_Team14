@@ -27,6 +27,7 @@ foreground subjects.
 
 - `video_bg_transfer.py` — stylize a video using AdaIN + MODNet matte per-frame (video input or single style image).
 - `bg_transfer.py` — single-image background transfer + style pipeline.
+- `app.py` — simple UI for user to transfer their own images
 - `AdaIN/` — AdaIN implementation, pretrained `decoder.pth` and `vgg_normalised.pth` expected under `AdaIN/models/`.
 - `MODNet/` — MODNet implementation and pretrained checkpoints under `MODNet/models/`.
 - `output/` — default output directory used by scripts (created at runtime).
@@ -64,7 +65,7 @@ pip install "imageio[ffmpeg]" imageio-ffmpeg
 
 ## Usage examples
 
-All examples assume you are in the `image_processing/medical/` directory.
+All examples assume you are in the `image_processing/` directory.
 
 Single-image background transfer (compose a stylized background):
 
@@ -72,6 +73,11 @@ Single-image background transfer (compose a stylized background):
 python bg_transfer.py
 # This script currently loads hard-coded example paths in the __main__ block —
 # modify the call at the bottom or adapt to your input files.
+```
+
+Run the simple UI locally at http://127.0.0.1:5000/
+```bash
+python app.py
 ```
 
 Stylize a video (style is a single image):
